@@ -11,11 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('sales', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 35);
-            $table->string('detail', 250);
+            $table->date('bought_date');
+            $table->string('number_sale', 15);
+            $table->enum('payment', ['Efectivo','Tarjeta', 'QR']);
             $table->string('status', 15);
+
+            
+
             $table->timestamps();
         });
     }
@@ -25,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('sales');
     }
 };
