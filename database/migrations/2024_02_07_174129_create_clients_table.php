@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('ci', 15);
             $table->string('name', 75);
             $table->date('birth_date');
+            $table->string('gender',15);
             $table->timestamps();
         });
     }
