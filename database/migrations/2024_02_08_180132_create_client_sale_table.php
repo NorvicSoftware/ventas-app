@@ -11,16 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('clients', function (Blueprint $table) {
+        Schema::create('client_sale', function (Blueprint $table) {
             $table->id();
-            $table->string('ci', 15);
-            $table->string('name', 75);
-            $table->date('birth_date');
-            $table->string('gender',15);
+            $table->integer('client_id');
+            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
 
-            $table->unsignedBigInteger('group_id');
-            $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');
-
+            $table->integer('sale_id');
+            $table->foreign('sale_id')->references('id')->on('sales')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('clients');
+        Schema::dropIfExists('client_sale');
     }
 };
