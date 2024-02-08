@@ -24,7 +24,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::crate('product_location', function (Blueprint $table){
+        Schema::create('product_location', function (Blueprint $table){
             $table->id();
 
             $table->unsignedBigInteger('product_id');
