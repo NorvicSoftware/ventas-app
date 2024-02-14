@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('detail', 250);
             $table->string('status', 15);
             $table->timestamps();
+            $table->string('new_field', 50);
         });
     }
 
