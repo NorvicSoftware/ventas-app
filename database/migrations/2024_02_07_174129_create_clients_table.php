@@ -17,6 +17,10 @@ return new class extends Migration
             $table->string('name', 75);
             $table->date('birth_date');
             $table->string('gender',15);
+
+            $table->unsignedBigInteger('group_id');
+            $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');
+            
             $table->timestamps();
         });
     }
