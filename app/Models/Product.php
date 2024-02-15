@@ -19,5 +19,4 @@ class Product extends Model
     public function locations(): BelongsToMany{
         return $this->belongsToMany(Location::class);
     }
-    
 }
