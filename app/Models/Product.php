@@ -14,4 +14,8 @@ class Product extends Model
     public function category () : BelongsTo {
         return $this->belongsTo(Category::class);
     }
+
+    public function sale () : BelongsTo {
+        return $this->belongsTo(Sale::class);
+    }
 }
