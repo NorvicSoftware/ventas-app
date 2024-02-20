@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('detail', 250);
             $table->string('status', 15);
             $table->timestamps();
-            $table->string('new_field', 50)->default('sin_asignar'); // Valor predeterminado 'sin_asignar'
+            $table->string('new_field', 50)->nullable();
+
         });
     }
 
