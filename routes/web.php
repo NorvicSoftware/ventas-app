@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\GroupController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,8 @@ Route::get('/', function () {
 Route::get('/categories', [CategoryController::class, 'index'])->name('category.index');
 
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+
+Route::get('/groups', [GroupController::class, 'index'])->name('groups.index');
 
 
 
