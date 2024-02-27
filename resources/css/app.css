@@ -1,0 +1,9 @@
+/* Estilo para párrafo */
+p {
+    font-family: Arial, sans-serif; /* Fuente del texto */
+    font-size: 16px; /* Tamaño del texto */
+    color: #333; /* Color del texto */
+    line-height: 1.5; /* Altura de línea */
+    margin-bottom: 20px; /* Margen inferior */
+  }
+  
