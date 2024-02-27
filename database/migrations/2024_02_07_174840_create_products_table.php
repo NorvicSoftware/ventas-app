@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('code', 15);
-            $table->string('name', 35);
+            $table->string('name', 50);
             $table->date('expiration_date');
             $table->text('description');
-            $table->decimal('unit_price', 10, 2);
+            $table->decimal('price', 10, 2);
+            $table->decimal('weight', 10, 2)->nullable();
 
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
@@ -32,7 +33,7 @@ return new class extends Migration
 
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->foreign('location_id')->references('id')->on('locations')->onDelete('cascade');
-            
+
         });
 
     }
