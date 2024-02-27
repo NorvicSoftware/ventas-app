@@ -4,6 +4,7 @@
 </header>
 <body>
 <h2>CATEGORIAS</h2>
+<a href="categories/create" class="button">NUEVA CATEGORIA</a>
 
 <table>
     <thead>
@@ -12,6 +13,7 @@
         <th>Detalle</th>
         <th>Estado</th>
         <th>Productos</th>
+        <th>Accion</th>
     </tr>
     </thead>
     <tbody>
@@ -22,9 +24,11 @@
             <td>{{ $category->status }}</td>
             <td>
                 @foreach($category->products as $product)
-
                     {{ $product->name }}<br>
                 @endforeach
+            </td>
+            <td>
+                <a href="categories/{{$category->id}}/edit">Editar</a>
             </td>
         </tr>
     @endforeach
@@ -63,5 +67,22 @@
 
     th {
         background-color: #eee;
+    }
+
+    a.button {
+        display: inline-block;
+        padding: 10px 20px;
+        text-decoration: none;
+        background-color: #4caf50; /* Color de fondo */
+        color: white; /* Color del texto */
+        border: 1px solid #4caf50; /* Borde del botón */
+        border-radius: 4px; /* Esquinas redondeadas */
+        cursor: pointer;
+        transition: background-color 0.3s ease; /* Efecto de transición en el cambio de color de fondo */
+    }
+
+    /* Cambio de color de fondo al pasar el mouse sobre el botón */
+    a.button:hover {
+        background-color: #45a049;
     }
 </style>
