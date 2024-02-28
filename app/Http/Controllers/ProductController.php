@@ -57,7 +57,9 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $categories = Category::all();
+        $product = Product::find($id);
+        return view('products.create', ['product' => $product, 'categories' => $categories]);
     }
 
     /**
@@ -65,7 +67,15 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $product = Product::find($id);
+        $product->code = $request->code;
+        $product->name = $request->name;
+        $product->expiration_date = $request->expiration_date;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->category_id = $request->category_id;
+        $product->save();
+        return redirect()->action([ProductController::class, 'index']);
     }
 
     /**
