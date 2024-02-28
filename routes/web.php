@@ -31,8 +31,14 @@ Route::get('/products/create', [ProductController::class, 'create'])->name('prod
 Route::post('/products/store', [ProductController::class, 'store'])->name('products.store');
 Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->name('products.edit');
 Route::put('/products/{id}/update', [ProductController::class, 'update'])->name('products.update');
+Route::get('/products/{id}/view', [ProductController::class, 'show'])->name('products.view');
 
 Route::get('/groups', [GroupController::class, 'index'])->name('groups.index');
+Route::get('/groups/create', [GroupController::class, 'create'])->name('groups.create');
+Route::post('/groups/store', [GroupController::class, 'store'])->name('groups.store');
+Route::get('/groups/{id}/edit', [GroupController::class, 'edit'])->name('groups.edit');
+Route::put('/groups/{id}/update', [GroupController::class, 'update'])->name('groups.update');
+Route::get('/groups/{id}/view', [GroupController::class, 'show'])->name('groups.view');
 
 
 

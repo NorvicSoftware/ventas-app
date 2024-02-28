@@ -4,7 +4,7 @@
 </header>
 <body>
 <h2>GRUPOS</h2>
-
+<a href="groups/create" class="button">NUEVA GRUPO</a>
 <table>
     <thead>
     <tr>
@@ -12,11 +12,15 @@
     </tr>
     </thead>
     <tbody>
-{{--    @foreach($groups as $group)--}}
+    @foreach($groups as $group)
         <tr>
-            <td>{{ $groups->type }}</td>
+            <td>{{ $group->type }}</td>
+            <td>
+                <a href="groups/{{ $group->id }}/edit">Editar</a>
+                <a href="groups/{{ $group->id }}/view">Ver</a>
+            </td>
         </tr>
-{{--    @endforeach--}}
+    @endforeach
     </tbody>
 </table>
 </body>

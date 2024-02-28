@@ -26,7 +26,10 @@
             <td>{{ $product->description }}</td>
             <td>{{ $product->price }}</td>
             <td>{{ $product->category->name }}</td>
-            <td> <a href="products/{{ $product->id }}/edit">Editar</a> </td>
+            <td>
+                <a href="products/{{ $product->id }}/edit">Editar</a>
+                <a href="products/{{ $product->id }}/view">Ver</a>
+            </td>
         </tr>
     @endforeach
     </tbody>
