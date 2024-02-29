@@ -103,11 +103,12 @@
     <section class="container">
         <header>
             @if(isset($product))
-            <h2>Editar Producto</h2>
+                <h2>Editar Producto</h2>
             @else
-            <h2>Crear Producto</h2>
+                <h2>Crear Producto</h2>
             @endif
         </header>
+        
         <form action="{{ isset($product) ? route('products.update', $product->id) : route('products.store') }}" method="POST">
             @csrf
             @if(isset($product))

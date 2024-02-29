@@ -24,13 +24,33 @@
             text-align: center;
             font-size: 4rem;
         }
+        .cabecera {
+            display: flex;
+            justify-content: space-around;
+        }
+        .buscar {
+            display: inline-block;
+            padding: 1em;
+            border-radius: .5em;
+        }
+        .btn_buscar {
+            background-color: green;
+            color: white;
+            
+        }
     </style>
 </head>
 <body>
     <header>
         <h2>Productos</h2>
-        <a href="products/create" class="btn_create">Nuevo Producto</a>
     </header>
+    <nav class="cabecera">
+        <a href="products/create" class="btn_create">Nuevo Producto</a>
+        <form action="{{ route('products.search') }}" method="GET">
+            <input class="buscar " type="text" name="search" placeholder="Buscar productos">
+            <button class="buscar btn_buscar" type="submit">Buscar</button>
+        </form>
+    </nav>
     <table border="1">
         <tr>
             <th>Codigo</th>
@@ -49,7 +69,11 @@
             <td>{{$product->description}}</td>
             <td>{{$product->price}}</td>
             <td>{{$product->category->name}}</td>
-            <td><a href="products/{{$product->id}}/edit">Editar</a></td>
+            <td>
+                <a href="products/{{$product->id}}/edit">Editar</a>
+                <a href="products/{{$product->id}}/view">Ver</a>
+            </td>
+            
         </tr>
         @endforeach()
     </table>

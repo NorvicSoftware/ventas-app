@@ -24,13 +24,34 @@
             text-align: center;
             font-size: 4rem;
         }
+        .cabecera {
+            display: flex;
+            justify-content: space-around;
+        }
+        .buscar {
+            display: inline-block;
+            padding: 1em;
+            border-radius: .5em;
+        }
+        .btn_buscar {
+            background-color: green;
+            color: white;
+            
+        }
     </style>
 </head>
 <body>
     <header>
         <h2>Categorias</h2>
-        <a href="categories/create" class="btn_create">Nueva Categoria</a>
     </header>
+    <nav class="cabecera">
+        <a href="categories/create" class="btn_create">Nueva Categoria</a>
+        <form action="{{ route('categories.search') }}" method="GET">
+            <input class="buscar" type="text" name="search" placeholder="Buscar categorias">
+            <button class="buscar btn_buscar" type="submit">Buscar</button>
+        </form>
+    </nav>
+    
     <table border="1">
         <tr>
             <th>Nombre</th>

@@ -54,8 +54,8 @@
                 <input type="number" name="price" id="" value="{{$product->price}}" class="cta" required="">
             </label>
             <label for="">Categoria:
-                {{-- <input type="text" name="category_id" id="" class="cta" required=""> --}}
-                {{--<select name="category_id" id="category_id" class="cta">
+                <input type="text" name="category_id" id="" class="cta" required="">
+                <select name="category_id" id="category_id" class="cta">
                     @foreach($categories as $category)
                         @if ($category->id === $product->category_id)
                             <option selected="" value="{{$category->id}}">{{$category->name}}</option>

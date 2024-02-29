@@ -58,6 +58,24 @@ class CategoryController extends Controller
         return view('categories.create', ['category' => $category]);
     }
 
+
+    /**
+     * Esta función maneja las solicitudes de búsqueda de productos.
+     * Realiza una búsqueda en la base de datos en función del término
+     * de búsqueda proporcionado por el usuario y devuelve una vista
+     * con los resultados de la búsqueda para que el usuario los vea.
+     */
+    public function search(Request $request)
+    {
+        $searchTerm = $request->input('search');
+
+        $categories = Category::where('name', 'like', '%'.$searchTerm.'%')
+                            ->orWhere('detail', 'like', '%'.$searchTerm.'%')
+                            ->get();
+
+        return view('categories.index', compact('categories'));
+    }
+
     /**
      * Update the specified resource in storage.
      */

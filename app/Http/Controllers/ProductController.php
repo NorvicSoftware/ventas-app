@@ -45,11 +45,14 @@ class ProductController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Permite obtener un producto con el id que se esta
+     * enviando desde la vista
+     * return retorna el producto a la vista.
      */
     public function show(string $id)
     {
-        //
+        $product = Product::find($id);
+        return view('products.view', ['product' => $product]);
     }
 
     /**
@@ -76,6 +79,23 @@ class ProductController extends Controller
         $product->category_id = $request->category_id;
         $product->save();
         return redirect()->action([ProductController::class, 'index']);
+    }
+
+    /**
+     * Esta función maneja las solicitudes de búsqueda de productos.
+     * Realiza una búsqueda en la base de datos en función del término
+     * de búsqueda proporcionado por el usuario y devuelve una vista
+     * con los resultados de la búsqueda para que el usuario los vea.
+     */
+    public function search(Request $request)
+    {
+        $searchTerm = $request->input('search');
+
+        $products = Product::where('name', 'like', '%'.$searchTerm.'%')
+                            ->orWhere('description', 'like', '%'.$searchTerm.'%')
+                            ->get();
+
+        return view('products.index', compact('products'));
     }
 
     /**
