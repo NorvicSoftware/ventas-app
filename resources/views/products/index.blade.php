@@ -4,7 +4,13 @@
 </header>
 <body>
 <h2>PRODUCTOS</h2>
-
+<nav class="cabecera">
+        <a href="products/create" class="btn_create">Nuevo Producto</a>
+        <form action="{{ route('products.search') }}" method="GET">
+            <input class="buscar " type="text" name="search" placeholder="Buscar productos">
+            <button class="buscar btn_buscar" type="submit">Buscar</button>
+        </form>
+    </nav>
 <table>
     <thead>
     <tr>

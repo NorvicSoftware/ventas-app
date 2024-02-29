@@ -77,6 +77,16 @@ class ProductController extends Controller
         $product->save();
         return redirect()->action([ProductController::class, 'index']);
     }
+    public function search(Request $request)
+    {
+        $searchTerm = $request->input('search');
+
+        $products = Product::where('name', 'like', '%'.$searchTerm.'%')
+                            ->orWhere('description', 'like', '%'.$searchTerm.'%')
+                            ->get();
+
+        return view('products.index', compact('products'));
+    }
 
     /**
      * Remove the specified resource from storage.

@@ -5,6 +5,13 @@
 <body>
 <h2>CATEGORIAS</h2>
 <a href="categories/create" class="button">NUEVA CATEGORIA</a>
+<nav class="cabecera">
+        <a href="categories/create" class="btn_create">Nueva Categoria</a>
+        <form action="{{ route('categories.search') }}" method="GET">
+            <input class="buscar" type="text" name="search" placeholder="Buscar categorias">
+            <button class="buscar btn_buscar" type="submit">Buscar</button>
+        </form>
+    </nav>
 
 <table>
     <thead>

@@ -69,6 +69,17 @@ class CategoryController extends Controller
         return redirect()->action([CategoryController::class, 'index']);
     }
 
+    public function search(Request $request)
+    {
+        $searchTerm = $request->input('search');
+
+        $categories = Category::where('name', 'like', '%'.$searchTerm.'%')
+                            ->orWhere('detail', 'like', '%'.$searchTerm.'%')
+                            ->get();
+
+        return view('categories.index', compact('categories'));
+    }
+
     /**
      * Remove the specified resource from storage.
      */
