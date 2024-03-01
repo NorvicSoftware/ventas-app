@@ -65,10 +65,13 @@ class GroupController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Elimina un grupo de la tabla grupos de la base de datos
+     * @return retonar una redireccion a la vista index de grupo.
      */
     public function destroy(string $id)
     {
-        //
+        $group = Group::find($id);
+        $group->delete();
+        return redirect()->action([GroupController::class, 'index']);
     }
 }

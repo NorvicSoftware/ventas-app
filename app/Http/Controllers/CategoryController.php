@@ -90,10 +90,13 @@ class CategoryController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Elimina un registro de la tabla categorias de la base de datos
+     * @return retona una redireccion a la vista index de categorias.
      */
     public function destroy(string $id)
     {
-        //
+        $category = Category::find($id);
+        $category->delete();
+        return redirect()->action([CategoryController::class, 'index']);
     }
 }

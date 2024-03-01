@@ -15,7 +15,7 @@
             padding: 8px;
             text-align: center;
         }
-        .btn_volver {
+        .btn {
             display: inline-block;
             padding: .8em;
             background-color: green;
@@ -24,16 +24,28 @@
             border-radius: .5em;
             text-decoration: none;
             margin: 0 auto;
+            border: none;
+        }
+        .btn_eliminar {
+            padding: 1.1em;
+            cursor: pointer;
         }
         .btn_container {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
         }
         h2 {
             text-align: center;
             font-size: 4rem;
         }
     </style>
+    <script>
+        function EliminarRegistro(value){
+            action = confirm(value) ? true: event.preventDefault()
+        }
+    </script>
 </head>
 <body>
     <header><h2>Información del Producto<br>{{$product->name}}</h2></header>
@@ -66,7 +78,12 @@
         </tbody>
     </table>
     <div class="btn_container">
-        <a href="/products" class="btn_volver">Volver</a>
+        <a href="/products" class="btn">Volver</a>
+        <form action="{{route('products.destroy', $product->id)}}" method="POST">
+            {{method_field('DELETE')}}
+            @csrf
+            <input class="btn btn_eliminar" type="submit" value="Eliminar" onclick="return EliminarRegistro('Eliminar producto')">
+        </form>
     </div>
     
 </body>

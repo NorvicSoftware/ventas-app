@@ -99,10 +99,13 @@ class ProductController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Elimina una registro de la base de datos de la tabla productos
+     * @return retorna una redirecion a la vista index de productos.
      */
     public function destroy(string $id)
     {
-        //
+        $product = Product::find($id);
+        $product->delete();
+        return redirect()->action([ProductController::class, 'index']);
     }
 }
