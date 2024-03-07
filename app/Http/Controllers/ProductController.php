@@ -32,6 +32,15 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'code' => 'required|min:5|max:15',
+            'name' => 'required|min:4|max:50',
+            'expiration_date' => "required|date|date_format:Y-m-d|after:2000-01-01",
+            'description' => 'required',
+            'price' => 'required|numeric|max:20000',
+            'category_id' => 'required'
+        ]);
+
         $product = new Product();
         $product->code = $request->code;
         $product->name = $request->name;
@@ -83,6 +92,8 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $product = Product::find($id);
+        $product->delete();
+        return redirect()->action([ProductController::class, 'index']);
     }
 }

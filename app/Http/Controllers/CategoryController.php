@@ -2,11 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\RepositoryCategory;
 use Illuminate\Http\Request;
 use App\Models\Category;
 
 class CategoryController extends Controller
 {
+    protected $categories;
+
+    public function __construct(RepositoryCategory $categories){
+        $this->categories = $categories;
+    }
+
     /**
      * Display a listing of the resource.
      * 1ro recupera toda la información de la tabla categorias
@@ -14,8 +21,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
-        return view('categories.index', ['categories' => $categories]);
+        return view('categories.index', ['categories' => $this->categories->getCategories()]);
     }
 
     /**
@@ -31,6 +37,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        //control de los datos del formulario
+
+        $request->validate([
+            'name' => "required|min:4|max:35",
+            'detail' => "required",
+            'status' => 'required',
+        ]);
+
         $category = new Category();
         $category->name = $request->name;
         $category->detail = $request->detail;

@@ -14,7 +14,7 @@ class GroupController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index($search)
+    public function index()
     {
         $groups = Group::all();
         return view('groups.index', ['groups' => $groups]);
