@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Reports;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use App\Repositories\RepositoryCategory;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use PDF;
 
 class ReportCategoryController extends Controller
 {
@@ -68,5 +70,27 @@ class ReportCategoryController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function reportPDF(){
+        $categories = Category::all();
+        $data = [
+            'categories' => $categories,
+            'report_name' => 'Listado de Categorias',
+        ];
+        $pdf = PDF::loadView('reports.categories.pdf', $data);
+        return $pdf->stream();
+    }
+
+    public function reportPDF2($id){
+        $category = Category::find($id);
+        $data = [
+            'category_name' => $category->name,
+            'products' => $category->products,
+            'report_name' => 'Listado de Categorias',
+        ];
+        $pdf = PDF::loadView('reports.categories.pdf2', $data);
+        return $pdf->stream();
+
     }
 }

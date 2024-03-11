@@ -3,6 +3,15 @@
     <title>LARAVEL</title>
 </header>
 <body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/groups">Grupo</a></li>
+                <li><a href="/categories">Categorias</a></li>
+                <li><a href="/products">Productos</a></li>
+            </ul>
+        </nav>
+    </header>
     @yield('content')
 </body>
 </html>
@@ -13,12 +22,42 @@
         padding: 0;
     }
 
+    /*header {*/
+    /*    !*background-color: #333;*!*/
+    /*    !*color: #fff;*!*/
+    /*    text-align: center;*/
+    /*    padding: 10px;*/
+    /*}*/
+
     header {
-        /*background-color: #333;*/
-        /*color: #fff;*/
-        text-align: center;
-        padding: 10px;
+        background-color: #333;
+        color: #fff;
+        padding: 10px 0;
     }
+
+    nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    nav ul li {
+        display: inline;
+        margin-right: 20px;
+    }
+
+    nav ul li a {
+        text-decoration: none;
+        color: #fff;
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    nav ul li a:hover {
+        color: #ffd700; /* Cambia el color al pasar el ratón */
+    }
+
+
     h2 {
         color: #333;
     }

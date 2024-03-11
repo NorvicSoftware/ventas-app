@@ -1,6 +1,6 @@
 <x-layout>
     <h2>REPORTES DE CATEGORIAS</h2>
-
+    <a class="button" target="_blank" href="{{ route('reports.categories.pdf') }}">IMPRIMIR REPORTE</a>
     <table>
         <thead>
         <tr>
@@ -24,6 +24,7 @@
                             </td>
                 <td>
                     <a href="categories/{{$category->id}}/edit">Editar</a>
+                    <a target="_blank" href="{{ route('reports.categories.pdf2', $category->id) }}">PDF</a>
                 </td>
             </tr>
         @endforeach

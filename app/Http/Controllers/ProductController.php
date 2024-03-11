@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use App\Models\Category;
+use App\Models\Location;
+//use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -41,14 +43,34 @@ class ProductController extends Controller
             'category_id' => 'required'
         ]);
 
-        $product = new Product();
-        $product->code = $request->code;
-        $product->name = $request->name;
-        $product->expiration_date = $request->expiration_date;
-        $product->description = $request->description;
-        $product->price = $request->price;
-        $product->category_id = $request->category_id;
-        $product->save();
+        DB::beginTransaction();
+        try {
+
+            $location = new Location();
+            $location->name = 'Estante A';
+            $location->session = "Aparatos electronicos";
+            $location->save();
+
+            $product = new Product();
+            $product->code = $request->code;
+            $product->name = $request->name;
+            $product->expiration_date = $request->expiration_date;
+            $product->description = $request->description;
+            $product->price = $request->price;
+            $product->category_id = $request->category_id;
+            $product->save();
+
+//            $product->locations()->attach($location->id);
+
+//            $location->products()->attach($product->id);
+            DB::table('product_location')->insert(['product_id' => $product->id, 'location_id' => $location->id]);
+
+            DB::commit();
+        }
+        catch (\Exception $e){
+            DB::rollBack();
+        }
+
         return redirect()->action([ProductController::class, 'index']);
     }
 

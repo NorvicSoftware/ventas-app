@@ -10,7 +10,7 @@ class RepositoryCategory
 
     public function getCategories()
     {
-        return Category::where('id', '>', 2)->get();
+        return Category::all();
     }
 
 }

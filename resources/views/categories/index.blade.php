@@ -1,4 +1,5 @@
-<x-layout>
+@extends('layout')
+@section('content')
 <h2>CATEGORIAS</h2>
 <a href="categories/create" class="button">NUEVA CATEGORIA</a>
 
@@ -30,4 +31,4 @@
     @endforeach
     </tbody>
 </table>
-    </x-layout>
+@endsection

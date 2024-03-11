@@ -27,7 +27,9 @@ Route::post('/categories/store', [CategoryController::class, 'store'])->name('ca
 Route::get('/categories/{id}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
 Route::put('/categories/{id}/update', [CategoryController::class, 'update'])->name('categories.update');
 
-Route::get('/reports/categories', [ReportCategoryController::class, 'index'])->name('reports.category.index');
+Route::get('/reports/categories', [ReportCategoryController::class, 'index'])->name('reports.categories.index');
+Route::get('reports/categories/pdf', [ReportCategoryController::class, 'reportPDF'])->name('reports.categories.pdf');
+Route::get('reports/categories/{id}/pdf2', [ReportCategoryController::class, 'reportPDF2'])->name('reports.categories.pdf2');
 
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
